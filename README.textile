@@ -2,7 +2,7 @@ h1. MGP Cachebuster - Force your visitor's to download the latest version of sty
 
 *Author*: "Matthew Pennell":http://www.thewatchmakerproject.com/ - Principal, "29digital":http://www.29digital.com/
 
-*GitHub Repository*: "http://github.com/matthewpennell/mgp.ee_cachebuster.ee_addon/":http://github.com/matthewpennell/mgp. ee_cachebuster.ee_addon/
+*GitHub Repository*: "http://github.com/matthewpennell/mgp.ee_cachebuster.ee_addon/":http://github.com/matthewpennell/mgp.ee_cachebuster.ee_addon/
 
 h2. Documentation
 
