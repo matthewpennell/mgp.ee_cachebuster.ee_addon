@@ -1,0 +1,23 @@
+h1. MGP Cachebuster - Force your visitor's to download the latest version of stylesheets and script files (ExpressionEngine extension).
+
+*Author*: "Matthew Pennell":http://www.thewatchmakerproject.com/ - Principal, "29digital":http://www.29digital.com/
+
+*GitHub Repository*: "http://github.com/matthewpennell/mgp.ee_cachebuster.ee_addon/":http://github.com/matthewpennell/mgp. ee_cachebuster.ee_addon/
+
+h2. Documentation
+
+An explanation and installation instructions can be found at "http://www.thewatchmakerproject.com/blog/new-expressionengine-extension-cachebuster/":http://www.thewatchmakerproject.com/blog/new-expressionengine-extension-cachebuster/
+
+h2. License
+
+MGP Cachebuster is currently available for use in all personal or commercial projects under "Creative Commons Attribution-Share Alike 3.0 Unported":http://creativecommons.org/licenses/by-sa/3.0/ license.
+
+You are free to:
+
+* *Share* - to copy, distribute and transmit the work
+* *Remix* - to adapt the work
+
+Under the following conditions:
+
+* *Attribution* - You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).
+* *Share Alike* - If you alter, transform, or build upon this work, you may distribute the resulting work only under the same, similar or a compatible license.
