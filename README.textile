@@ -6,7 +6,63 @@ h1. MGP Cachebuster - Force your visitor's to download the latest version of sty
 
 h2. Documentation
 
-An explanation and installation instructions can be found at "http://www.thewatchmakerproject.com/blog/new-expressionengine-extension-cachebuster/":http://www.thewatchmakerproject.com/blog/new-expressionengine-extension-cachebuster/
+A full explanation of this extension can be found at "http://www.thewatchmakerproject.com/blog/new-expressionengine-extension-cachebuster/":http://www.thewatchmakerproject.com/blog/new-expressionengine-extension-cachebuster/
+
+h2. Installation
+
+As this extension relies on hacking the core EE files, it is *NOT* recommended for mission-critical sites or applications. However, if you are confident that you can maintain the necessary hack (including when upgrading) you shouldn't have any problems. (If you forget to upgrade, the extension will fail silently.)
+
+h3. Hacking a new hook
+
+Open the */system/core/core.output.php* file and locate the following lines (around line 272 in EE1.6.5):
+
+ <pre><code>
+/** -----------------------------------
+/**  Fetch the buffered output
+/** -----------------------------------*/
+		
+echo $output;
+</code></pre>
+
+We are going to add a new hook for our extension to allow us to manipulate the HTML output just prior to sending it to the browser. Add the new lines shown below:
+
+ <pre><code>
+/** -----------------------------------
+/**  Fetch the buffered output
+/** -----------------------------------*/
+		
+// MGP Cachebuster 030209: Added new hook to do stuff with the final browser output
+if (isset($EXT->extensions['before_display_final_output']))
+{
+    $output = $EXT->call_extension('before_display_final_output', $output);
+}
+        
+echo $output;
+</code></pre>
+
+We also need to make sure we can refer to the @$EXT@ object - scroll up to the start of the @display_final_output()@ function (around line 94) and add @$EXT@ to the declared globals on the first line of the function:
+
+@global $IN, $PREFS, $TMPL, $BM, $DB, $SESS, $FNS, $LOC, $EXT;@
+
+h3. Installing the extension
+
+Installing the Cachebuster extension is exactly the same as installing any other extension:
+
+# Copy the @ext.cachebuster.php@ file into */system/extensions*
+# Copy @lang.cachebuster.php@ into */system/language/english*
+# Visit your Extensions Manager and enable the new extension
+
+h3. Using the Cachebuster
+
+When you visit the Settings page for the Cachebuster extension, you will see five fields:
+
+* *Current version* - This is the version number that will be appended to CSS or JS files to force visitors to load the latest version instead of a cached version
+* *Apply version numbers to CSS files* - Choose whether you want to control CSS files
+* *CSS filenames* - A comma-separated list of stylesheets you want to affect (either with or without the ".css" extension)
+* *Apply version numbers to JavaScript files* - Choose whether you want to control JavaScript files
+* *JavaScript filenames* - A comma-separated list of external scripts you want to affect (either with or without the ".js" extension)
+
+Every time you make a change to a CSS or JavaScript file and upload it to the live website, you want to be sure that visitors are getting that new version of the file and not a cached one (especially if older versions of the file will cause layout or functionality bugs). This extension appends a querystring parameter to each file flagged in the settings, which causes the browser to treat it as a new file and ignore any cached versions.
 
 h2. License
 
